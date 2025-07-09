@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "500px", margin: "auto" }}>
-      <h1>Bem-vindo ao meu site 👋</h1>
+<h1>Bem-vindo ao novo site do Eduardo 💪</h1>
       <p>Subscreve para receberes novidades!</p>
 
       <form onSubmit={handleSubmit}>
