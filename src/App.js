@@ -1,37 +1,37 @@
 import React from "react";
-import { db } from "./firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import "./App.css";
 
 export default function App() {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const nome = e.target.nome.value;
-    const email = e.target.email.value;
-
-    try {
-      await addDoc(collection(db, "subscricoes"), {
-        nome,
-        email,
-        criadoEm: serverTimestamp()
-      });
-      alert("Subscreveste com sucesso!");
-      e.target.reset();
-    } catch (err) {
-      console.error("Erro:", err);
-      alert("Erro ao subscrever.");
-    }
-  };
-
   return (
-    <div style={{ padding: "2rem", maxWidth: "500px", margin: "auto" }}>
-<h1>Bem-vindo ao novo site do Eduardo 💪</h1>
-      <p>Subscreve para receberes novidades!</p>
-
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="nome" placeholder="O teu nome" required /><br /><br />
-        <input type="email" name="email" placeholder="O teu email" required /><br /><br />
-        <button type="submit">Subscrever</button>
-      </form>
+    <div className="main-bg">
+      <header className="top-bar">
+        <div className="logo-area">
+          <span className="logo">EM</span>
+          <span className="brand">PT EDU MARQUES</span>
+        </div>
+        <nav className="nav-area">
+          <span className="nav-link">PROGRAMS</span>
+          <span className="nav-link">ABOUT</span>
+          <span className="nav-link">CART</span>
+          <span className="icon">🔍</span>
+          <span className="icon">🛒</span>
+        </nav>
+      </header>
+      <main>
+        <section className="hero-section">
+          <div className="hero-content">
+            <h1 className="hero-title">SCIENCE-BASED<br />BODYBUILDING</h1>
+            <button className="hero-btn">VIEW PROGRAMS</button>
+          </div>
+        </section>
+        <section className="testimonial-section">
+          <blockquote>“Jeff’s training programs have completely changed how I look and feel.”</blockquote>
+          <div className="testimonial-info">
+            <span className="stars">★★★★★</span>
+            <span className="customer">JORDAN R.<br /><span className="verified">Verified Customer</span><br />THE ESSENTIALS PROGRAM</span>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
