@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import "./App.css";
 
 export default function Programs() {
+  const { t } = useTranslation();
   return (
     <div className="main-bg">
       <header className="top-bar">
@@ -13,21 +15,21 @@ export default function Programs() {
           </Link>
         </div>
         <nav className="nav-area">
-          <Link to="/programs" className="nav-link">PROGRAMS</Link>
-          <span className="nav-link">ABOUT</span>
-          <span className="nav-link">CART</span>
+          <Link to="/programs" className="nav-link">{t('programs')}</Link>
+          <span className="nav-link">{t('about')}</span>
+          <span className="nav-link">{t('cart')}</span>
           <span className="icon">🔍</span>
           <span className="icon">🛒</span>
-          <Link to="/landing" className="nav-link">LANDING</Link>
+          <Link to="/landing" className="nav-link">{t('landing')}</Link>
         </nav>
       </header>
       <div className="programs-bg">
-        <h2 className="programs-title">Pacotes Online <span className="programs-sub">(valor mensal)</span></h2>
+        <h2 className="programs-title">{t('online_packages')} <span className="programs-sub">({t('monthly_value')})</span></h2>
         <div className="programs-table">
           <div className="programs-header">
-            <div className="programs-col programs-col1">Pacote</div>
-            <div className="programs-col programs-col2">Serviços Incluídos</div>
-            <div className="programs-col programs-col3">Preço</div>
+            <div className="programs-col programs-col1">{t('package')}</div>
+            <div className="programs-col programs-col2">{t('included_services')}</div>
+            <div className="programs-col programs-col3">{t('price')}</div>
           </div>
           <div className="programs-row">
             <div className="programs-col programs-col1">First Steps</div>

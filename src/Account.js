@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
+import { useTranslation } from 'react-i18next';
 import "./App.css";
 import "./firebase";
 
 export default function Account() {
+  const { t } = useTranslation();
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,15 +40,15 @@ export default function Account() {
   if (user && user.emailVerified) {
     return (
       <div className="account-area">
-        <h2>Área Pessoal</h2>
+        <h2>{t('account_area')}</h2>
         <div className="account-tabs">
-          <button className="account-tab">Treino</button>
-          <button className="account-tab">Nutrição</button>
-          <button className="account-tab">A tua evolução</button>
+          <button className="account-tab">{t('training')}</button>
+          <button className="account-tab">{t('nutrition')}</button>
+          <button className="account-tab">{t('your_progress')}</button>
         </div>
         <div className="account-content">
-          <p>Bem-vindo, {user.email}!</p>
-          <p>Escolhe uma área acima para veres o teu conteúdo.</p>
+          <p>{t('welcome')}, {user.email}!</p>
+          <p>{t('choose_area')}</p>
         </div>
       </div>
     );
@@ -55,14 +57,14 @@ export default function Account() {
   return (
     <div className="account-bg">
       <div className="account-box">
-        <h2>{isRegister ? "Criar Conta" : "Entrar na Área Pessoal"}</h2>
+        <h2>{isRegister ? t('create_account') : t('login_account')}</h2>
         <form onSubmit={handleSubmit} className="account-form">
-          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-          <button type="submit">{isRegister ? "Criar Conta" : "Entrar"}</button>
+          <input type="email" placeholder={t('email')} value={email} onChange={e => setEmail(e.target.value)} required />
+          <input type="password" placeholder={t('password')} value={password} onChange={e => setPassword(e.target.value)} required />
+          <button type="submit">{isRegister ? t('create_account') : t('login')}</button>
         </form>
         <button className="account-switch" onClick={() => setIsRegister(r => !r)}>
-          {isRegister ? "Já tens conta? Entrar" : "Ainda não tens conta? Regista-te"}
+          {isRegister ? t('already_have_account') : t('dont_have_account')}
         </button>
         {message && <div className="account-message">{message}</div>}
       </div>
