@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
@@ -6,15 +7,18 @@ export default function App() {
     <div className="main-bg">
       <header className="top-bar">
         <div className="logo-area">
-          <span className="logo">EM</span>
-          <span className="brand">PT EDU MARQUES</span>
+          <Link to="/" className="logo-link">
+            <span className="logo">EM</span>
+            <span className="brand">PT EDU MARQUES</span>
+          </Link>
         </div>
         <nav className="nav-area">
-          <span className="nav-link">PROGRAMS</span>
+          <Link to="/programs" className="nav-link">PROGRAMS</Link>
           <span className="nav-link">ABOUT</span>
           <span className="nav-link">CART</span>
           <span className="icon">🔍</span>
           <span className="icon">🛒</span>
+          <Link to="/landing" className="nav-link">LANDING</Link>
         </nav>
       </header>
       <main>
